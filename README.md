@@ -47,14 +47,14 @@ RNA-Seq-Data-Analysis-Pipeline/
 ## 🚀 Getting Started
 
 ### Prerequisites
-- R (≥ 4.0.0)
+- R (≥ 4.6.0)
 - RStudio (recommended)
 
 ### Installation
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/RNA-Seq-Data-Analysis-Pipeline.git
+git clone https://github.com/shakawat96907/RNA-Seq-Data-Analysis-Pipeline.git
 cd RNA-Seq-Data-Analysis-Pipeline
 ```
 
@@ -119,6 +119,22 @@ See `setup.R` for complete dependency list.
 
 ---
 
+## Declarations & Contact
+
+**Data Availability:** Raw sequencing data are available from the corresponding author upon reasonable request. Processed count matrices and analysis results are provided in the `Data/` directory.
+
+**Code Availability:** This pipeline is freely available at https://github.com/shakawat96907/RNA-Seq-Data-Analysis-Pipeline.
+
+**Competing Interests:** The authors declare no competing interests.
+
+**Funding:** This research was supported by institutional resources.
+
+**Correspondence:** For questions about the pipeline, data analysis, or collaborations, please contact:
+- Email: shakawat96907@example.com
+- GitHub: [@shakawat96907](https://github.com/shakawat96907)
+
+---
+
 ## 📝 License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
@@ -128,9 +144,3 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
-
----
-
-## 📧 Contact
-
-For questions or collaborations, please open an issue on GitHub.
