@@ -56,17 +56,3 @@ RNA-Seq-Data-Analysis-Pipeline/
 ├── .gitignore
 ├── setup.R
 └── README.md
-
----
-
-## 📜 Declarations & Contact
-
-* **Author:** Md. Shakawat Hossain
-* **Affiliation:** Department of Biochemistry and Molecular Biology, Shahjalal University of Science and Technology (SUST), Sylhet-3114, Bangladesh.
-* **Correspondence:** shakawathossain96907@gmail.com
-* **Personal Website:** [shakawat-hossain.netlify.app](https://shakawat-hossain.netlify.app/)
-* **Professional Networks:** [LinkedIn Profile](https://www.linkedin.com/in/md-shakawat-hossain-372143378/) | [ORCID Profile](https://orcid.org/0009-0008-5050-2275)
-
----
-
-*Maintained by Md. Shakawat Hossain. For collaboration, pipeline optimization, or transcriptomic data analysis inquiries, reach out via E-mail, LinkedIn, or Website.*
