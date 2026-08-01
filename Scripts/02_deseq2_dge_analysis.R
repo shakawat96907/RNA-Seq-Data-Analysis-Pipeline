@@ -19,6 +19,7 @@ suppressPackageStartupMessages({
 # GLOBAL PARAMETERS
 # ============================================================================
 DATA_DIR        <- "Data"
+FIG_DIR         <- "Figures"
 FILTERED_FILE   <- file.path(DATA_DIR, "filtered_counts.rds")
 METADATA_FILE   <- file.path(DATA_DIR, "sample_metadata.rds")
 PADJ_CUTOFF     <- 0.05
@@ -99,6 +100,19 @@ dds <- DESeq2::DESeq(dds, quiet = FALSE)
 
 cat("[INFO] DESeq2 model fitting complete\n")
 
+# ---- Publication-grade Dispersion Estimate Plot ---------------------------
+cat("\n[STEP 4b] Generating dispersion estimate plot (plotDispEsts)...\n")
+dir.create(FIG_DIR, showWarnings = FALSE, recursive = TRUE)
+
+png(file.path(FIG_DIR, "02_deseq2_dispersion_plot.png"),
+    width = 10, height = 8, units = "in", res = 300)
+DESeq2::plotDispEsts(dds,
+                     main = "DESeq2 Dispersion Estimates (GSE124647)",
+                     xlab = "Mean of Normalized Counts",
+                     ylab = "Dispersion")
+dev.off()
+cat("[OUTPUT] Figures/02_deseq2_dispersion_plot.png\n")
+
 # ============================================================================
 # STEP 5: EXTRACT RESULTS WITH SHRINKAGE (lfcShrink)
 # ============================================================================
@@ -110,6 +124,18 @@ res <- DESeq2::results(dds,
                                     levels(column_data$condition)[2],
                                     levels(column_data$condition)[1]),
                        alpha = ALPHA)
+
+# ---- Publication-grade MA Plot --------------------------------------------
+cat("\n[STEP 5a] Generating MA plot (plotMA)...\n")
+ma_ylim <- max(abs(res$log2FoldChange), na.rm = TRUE) * 1.1
+png(file.path(FIG_DIR, "02_deseq2_ma_plot.png"),
+    width = 10, height = 8, units = "in", res = 300)
+DESeq2::plotMA(res,
+               main = "MA Plot: TNBC vs Luminal (GSE124647)",
+               ylim = c(-ma_ylim, ma_ylim),
+               alpha = ALPHA)
+dev.off()
+cat("[OUTPUT] Figures/02_deseq2_ma_plot.png\n")
 
 # Shrinkage estimates (apeglm) for robust LFC
 if ("apeglm" %in% rownames(installed.packages())) {
