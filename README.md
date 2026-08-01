@@ -8,21 +8,21 @@ An automated, end-to-end computational pipeline implemented in R (v4.6.0) for pu
 
 This computational framework processes raw count matrices from Breast Cancer cohorts (GSE124647) divided into seven analytical pipelines:
 
-### 1. Data Ingestion & QC Preprocessing (`01_data_ingestion_qc_preprocessing.R`)
+### 1. Count Matrix Preprocessing (`01_count_matrix_preprocessing.R`)
 * Programmatic data ingestion of GSE124647 (TNBC vs Luminal/HER2 cohorts).
 * Low-count expression filtering ($CPM > 1$), library normalization, and Variance Stabilizing Transformations (VST).
 * Sample Quality Control (QC) and Principal Component Analysis (PCA).
 
-### 2. Differential Expression Modeling (`02_dge_deseq2_edger_modeling.R`)
-* Consensus DEG identification using `DESeq2` and `edgeR`.
+### 2. DESeq2 Differential Expression Analysis (`02_deseq2_dge_analysis.R`)
+* Differential gene expression modeling using `DESeq2`.
 * Strict statistical cutoffs: Adjusted p-value ($p_{adj} < 0.05$) and fold change ($\vert{}\log_2 \text{FC}\vert{} \ge 1.5$).
 
-### 3. High-Dimensional Biostatistical Visualizations (`03_high_dim_visualization_plots.R`)
+### 3. Volcano & Heatmap Visualization (`03_volcano_and_heatmap_visualization.R`)
 * Volcano plots highlighting driver genes with custom statistical thresholds.
-* Hierarchical heatmaps (`ComplexHeatmap`) with clinical metadata annotations (Subtypes, Receptor Status).
+* Hierarchical heatmaps (`pheatmap`) with clinical metadata annotations (Subtypes, Receptor Status).
 
-### 4. Functional Pathway Enrichment (`04_go_kegg_reactome_enrichment.R`)
-* Gene Ontology (GO: BP, CC, MF), KEGG, and Reactome pathway mapping using `clusterProfiler`.
+### 4. GO & KEGG Pathway Enrichment (`04_go_kegg_pathway_enrichment.R`)
+* Gene Ontology (GO: BP, CC, MF) and KEGG pathway mapping using `clusterProfiler`.
 * Gene Set Enrichment Analysis (GSEA) on Hallmark pathways.
 
 ### 5. PPI Network & Hub Gene Identification (`05_protein_network_ppi_hub_genes.R`)
@@ -42,15 +42,16 @@ This computational framework processes raw count matrices from Breast Cancer coh
 ```text
 RNA-Seq-Data-Analysis-Pipeline/
 ├── Scripts/
-│   ├── 01_data_ingestion_qc_preprocessing.R
-│   ├── 02_dge_deseq2_edger_modeling.R
-│   ├── 03_high_dim_visualization_plots.R
-│   ├── 04_go_kegg_reactome_enrichment.R
+│   ├── 01_count_matrix_preprocessing.R
+│   ├── 02_deseq2_dge_analysis.R
+│   ├── 03_volcano_and_heatmap_visualization.R
+│   ├── 04_go_kegg_pathway_enrichment.R
 │   ├── 05_protein_network_ppi_hub_genes.R
 │   ├── 06_prognosis_survival_analysis.R
 │   └── 07_immune_infiltration_ssgsea.R
 ├── Figures/
-│   └── .gitkeep
+│   ├── .gitkeep
+│   └── 01_pca_plot.png
 ├── Data/
 │   └── .gitkeep
 ├── .gitignore
